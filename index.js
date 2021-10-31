@@ -6,8 +6,6 @@ const cors = require('cors');
 const app = express()
 const port = process.env.PORT || 5000;
 
-// user:traveleTour
-// pass:IFO7eUNqHKx54zoR
 
 // middlewire
 app.use(cors());
@@ -48,6 +46,13 @@ async function run() {
             const result = await bookedPackageCollection.insertOne(bookedPackage)
             res.json(result)
 
+        })
+
+        // Post api for add package
+        app.post('/addPackage', async (req, res) => {
+            const addedPackage = req.body;
+            const result = await packageCollection.insertOne(addedPackage);
+            res.json(result);
         })
         // Get api for all bookings
 
